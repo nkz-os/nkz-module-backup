@@ -1,0 +1,58 @@
+# Example CronJob - This is what the SchedulerService creates programmatically
+# For reference and manual testing only
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup-tenant-example
+  namespace: nekazari
+  labels:
+    app: backup-worker
+    tenant: tenant-example
+spec:
+  schedule: "0 3 * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      activeDeadlineSeconds: 7200
+      ttlSecondsAfterFinished: 86400
+      template:
+        spec:
+          restartPolicy: Never
+          imagePullSecrets:
+            - name: ghcr-secret
+          containers:
+            - name: backup-worker
+              image: ghcr.io/k8-benetis/nkz-module-backup/backup-backend:latest
+              imagePullPolicy: Always
+              env:
+                - name: TENANT_ID
+                  value: "tenant-example"
+                - name: BACKUP_SOURCES
+                  value: '["postgresql", "minio"]'
+                - name: RETENTION_DAILY
+                  value: "7"
+                # Secrets injected by controller
+                - name: DATABASE_URL
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgresql-secret
+                      key: postgres-url
+                - name: RESTIC_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: backup-secret-tenant-example
+                      key: restic-password
+                - name: RCLONE_CONFIG_JSON
+                  valueFrom:
+                    secretKeyRef:
+                      name: backup-secret-tenant-example
+                      key: rclone-config
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "100m"
+                limits:
+                  memory: "1Gi"
+                  cpu: "1000m"

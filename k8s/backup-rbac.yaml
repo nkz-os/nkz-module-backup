@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: backup-controller
+  namespace: nekazari
+  labels:
+    app: backup-api
+    component: backend
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: backup-controller-role
+  namespace: nekazari
+rules:
+  # Allow managing CronJobs and Jobs
+  - apiGroups: ["batch"]
+    resources: ["cronjobs", "jobs"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  # Allow getting logs from pods (for job history)
+  - apiGroups: [""]
+    resources: ["pods", "pods/log"]
+    verbs: ["get", "list", "watch"]
+  # Allow reading secrets (for mounting into worker pods)
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "list", "watch"]
+    # NOTE: API needs to read secrets to inject references,
+    # but strictly speaking Python client instantiates V1EnvVarSource which K8s resolves.
+    # However, if we need to verify secret existence, this helps.
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: backup-controller-binding
+  namespace: nekazari
+subjects:
+  - kind: ServiceAccount
+    name: backup-controller
+    namespace: nekazari
+roleRef:
+  kind: Role
+  name: backup-controller-role
+  apiGroup: rbac.authorization.k8s.io

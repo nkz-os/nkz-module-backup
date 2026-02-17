@@ -1,0 +1,57 @@
+{
+    "id": "backup",
+    "name": "nkz-module-backup",
+    "display_name": "Backup & Disaster Recovery",
+    "version": "1.0.0",
+    "description": "Enterprise-grade backup solution using Restic (encrypted, deduplicated snapshots) and Rclone (multi-cloud support). Tenant-owned encryption keys for full data sovereignty.",
+    "short_description": "Secure, encrypted off-site backups",
+    "icon": "shield-check",
+    "author": {
+        "name": "Nekazari Team",
+        "email": "support@robotika.cloud"
+    },
+    "category": "infrastructure",
+    "module_type": "ADDON_FREE",
+    "required_plan_type": "basic",
+    "pricing_tier": "FREE",
+    "route_path": "/backup",
+    "label": "Backups",
+    "required_roles": [
+        "TenantAdmin",
+        "PlatformAdmin"
+    ],
+    "navigation": {
+        "enabled": true,
+        "priority": 90,
+        "section": "settings",
+        "icon": "shield-check"
+    },
+    "dependencies": {
+        "sdk_version": "^1.0.0",
+        "platform_version": "^2.0.0"
+    },
+    "build_config": {
+        "type": "remote",
+        "remote_entry_url": "/modules/backup/nkz-module.js",
+        "scope": "backup_module",
+        "exposed_module": "./moduleEntry"
+    },
+    "slots": {
+        "dashboard-widget": [
+            {
+                "component": "BackupStatusWidget",
+                "props": {}
+            }
+        ]
+    },
+    "metadata": {
+        "icon": "🛡️",
+        "color": "#10B981",
+        "features": [
+            "Client-side Encryption (AES-256)",
+            "Deduplicated Snapshots",
+            "Multi-cloud Support (S3, SFTP, GDrive, OneDrive)",
+            "Point-in-time Recovery"
+        ]
+    }
+}
