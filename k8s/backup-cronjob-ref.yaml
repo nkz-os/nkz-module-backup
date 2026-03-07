@@ -20,8 +20,6 @@ spec:
       template:
         spec:
           restartPolicy: Never
-          imagePullSecrets:
-            - name: ghcr-secret
           containers:
             - name: backup-worker
               image: ghcr.io/k8-benetis/nkz-module-backup/backup-backend:latest
