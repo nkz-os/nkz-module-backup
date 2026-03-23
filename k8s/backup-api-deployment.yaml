@@ -23,7 +23,7 @@ spec:
       serviceAccountName: backup-controller
       containers:
         - name: api
-          image: ghcr.io/k8-benetis/nkz-module-backup/backup-backend:latest
+          image: ghcr.io/nkz-os/nkz-module-backup/backup-backend:latest
           imagePullPolicy: Always
           ports:
             - name: http
@@ -61,7 +61,7 @@ spec:
                 fieldRef:
                   fieldPath: metadata.namespace
             - name: BACKUP_WORKER_IMAGE
-              value: "ghcr.io/k8-benetis/nkz-module-backup/backup-worker:latest"
+              value: "ghcr.io/nkz-os/nkz-module-backup/backup-worker:latest"
           resources:
             requests:
               memory: "64Mi"

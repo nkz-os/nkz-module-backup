@@ -44,8 +44,8 @@ This module follows the Nekazari Modular Monolith pattern:
 3.  **Deploy Worker Image**:
     Build and push the backend image to your registry:
     ```bash
-    docker build -t ghcr.io/k8-benetis/nkz-module-backup/backup-backend:latest -f backend/Dockerfile backend/
-    docker push ghcr.io/k8-benetis/nkz-module-backup/backup-backend:latest
+    docker build -t ghcr.io/nkz-os/nkz-module-backup/backup-backend:latest -f backend/Dockerfile backend/
+    docker push ghcr.io/nkz-os/nkz-module-backup/backup-backend:latest
     ```
 
 ## Security

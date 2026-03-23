@@ -24,7 +24,7 @@ class Settings(BaseSettings):
     
     # Kubernetes
     K8S_NAMESPACE: str = "nekazari"
-    BACKUP_WORKER_IMAGE: str = "ghcr.io/k8-benetis/nkz/backup-worker:latest"
+    BACKUP_WORKER_IMAGE: str = "ghcr.io/nkz-os/nkz/backup-worker:latest"
     
     # Notifications
     NOTIFICATION_WEBHOOK_URL: str | None = None
