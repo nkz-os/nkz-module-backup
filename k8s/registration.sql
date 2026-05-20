@@ -27,7 +27,7 @@ INSERT INTO marketplace_modules (
     '/backup',
     'Backups',
     'ADDON_FREE',
-    '{"name": "Nekazari Team", "email": "support@robotika.cloud"}'::jsonb,
+    '{"name": "Nekazari Team", "email": "support@example.com"}'::jsonb,
     true,
     ARRAY['TenantAdmin', 'PlatformAdmin'],
     '{"icon": "🛡️", "color": "#10B981"}'::jsonb
