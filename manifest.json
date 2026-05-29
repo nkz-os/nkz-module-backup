@@ -4,6 +4,14 @@
     "display_name": "Backup & Disaster Recovery",
     "version": "1.0.0",
     "description": "Enterprise-grade backup solution using Restic (encrypted, deduplicated snapshots) and Rclone (multi-cloud support). Tenant-owned encryption keys for full data sovereignty.",
+    "description_i18n": {
+        "es": "Solución de backup empresarial con Restic (cifrado, snapshots deduplicados) y Rclone (soporte multi-cloud). Claves de cifrado propiedad del tenant para soberanía total de datos.",
+        "en": "Enterprise-grade backup solution using Restic (encrypted, deduplicated snapshots) and Rclone (multi-cloud support). Tenant-owned encryption keys for full data sovereignty.",
+        "eu": "Enpresako backup soluzioa Resticekin (zifratua, snapshots deduplikatuak) eta Rclonerekin (multi-cloud euskarria). Tenant-en jabetzako zifratze-gakoak datuen subiranotasun osorako.",
+        "fr": "Solution de sauvegarde professionnelle utilisant Restic (chiffrement, snapshots dédupliqués) et Rclone (support multi-cloud). Clés de chiffrement détenues par le tenant pour une souveraineté totale des données.",
+        "pt": "Solução de backup empresarial com Restic (encriptado, snapshots deduplicados) e Rclone (suporte multi-cloud). Chaves de encriptação propriedade do tenant para total soberania de dados.",
+        "ca": "Solució de backup empresarial amb Restic (xifrat, snapshots deduplicats) i Rclone (suport multi-cloud). Claus de xifrat propietat del tenant per a sobirania total de dades."
+    },
     "short_description": "Secure, encrypted off-site backups",
     "icon": "shield-check",
     "author": {
