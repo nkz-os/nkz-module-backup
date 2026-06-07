@@ -1,0 +1,87 @@
+{
+  "title": "Backups",
+  "tabs": {
+    "config": "Configuration",
+    "history": "History",
+    "restore": "Restore"
+  },
+  "config": {
+    "sources": "Sources",
+    "destination_title": "Destination",
+    "destination_desc": "Choose where backups will be stored.",
+    "test_connection": "Test connection",
+    "encryption_title": "Encryption",
+    "encryption_desc": "Encryption keys are managed by the platform. You may provide an optional passphrase for additional protection.",
+    "encryption_placeholder": "Optional passphrase",
+    "save": "Save"
+  },
+  "destinations": {
+    "s3": "S3",
+    "sftp": "SFTP",
+    "webdav": "WebDAV",
+    "drive": "Google Drive",
+    "dropbox": "Dropbox",
+    "onedrive": "OneDrive"
+  },
+  "retention": {
+    "title": "Retention policy",
+    "explanation": "Define how many snapshots to keep for each interval.",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly"
+  },
+  "snapshot": {
+    "id": "ID"
+  },
+  "restore": {
+    "title": "Restore",
+    "full_restore": "Full restore",
+    "warning": "This action may overwrite existing data. Proceed carefully.",
+    "confirm_token": "Type RESTORE to confirm",
+    "download": "Download",
+    "mount": "Mount"
+  },
+  "widget": {
+    "title": "Backups",
+    "not_configured": "Backup is not configured yet.",
+    "configure": "Configure",
+    "last_backup": "Last backup {{time}}",
+    "never_backed_up": "No backups yet"
+  },
+  "status": {
+    "protected": "Protected",
+    "at_risk": "At risk"
+  },
+  "alerts": {
+    "saved_ok": "Settings saved successfully",
+    "saved_error": "Failed to save settings",
+    "connection_ok": "Connection successful! ✅",
+    "connection_error": "Connection failed ❌"
+  },
+  "ui": {
+    "testing": "Testing...",
+    "saving": "Saving...",
+    "remove": "Remove",
+    "internal_db": "Internal database (tenant isolated)",
+    "internal_files": "Internal files (tenant isolated)",
+    "connection_string_placeholder": "Connection string (postgres://user:pass@host:port/db)",
+    "contact_admin": "Contact platform admin to configure connection.",
+    "add_postgres_internal": "+ Postgres (internal)",
+    "add_minio_internal": "+ MinIO (internal)",
+    "add_odoo": "+ Odoo",
+    "add_external_db": "+ External DB",
+    "provider_type": "Provider type",
+    "bucket_name": "Bucket name",
+    "endpoint_url": "Endpoint URL (e.g. minio:9000)",
+    "access_key_id": "Access key ID",
+    "secret_access_key": "Secret access key",
+    "host": "Host (e.g. 192.168.1.50)",
+    "user": "User",
+    "password_or_key": "Password / key",
+    "job_date": "Date",
+    "job_type": "Type",
+    "job_status": "Status",
+    "job_duration": "Duration",
+    "job_size_dedup": "Size (dedup)"
+  }
+}

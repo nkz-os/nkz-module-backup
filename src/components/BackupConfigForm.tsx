@@ -68,9 +68,9 @@ const BackupConfigForm: React.FC = () => {
         setLoading(true);
         try {
             await backupApi.updateConfig(config);
-            alert('Settings saved successfully');
+            alert(t('alerts.saved_ok'));
         } catch (e) {
-            alert('Failed to save settings');
+            alert(t('alerts.saved_error'));
         } finally {
             setLoading(false);
         }
@@ -80,9 +80,9 @@ const BackupConfigForm: React.FC = () => {
         setTesting(true);
         try {
             await backupApi.testConnection(config);
-            alert('Connection successful! ✅');
+            alert(t('alerts.connection_ok'));
         } catch (e) {
-            alert('Connection failed ❌');
+            alert(t('alerts.connection_error'));
         } finally {
             setTesting(false);
         }
@@ -104,26 +104,28 @@ const BackupConfigForm: React.FC = () => {
                             <div className="flex-1 space-y-2">
                                 <div className="flex justify-between">
                                     <span className="font-medium text-sm uppercase">{source.type}</span>
-                                    <button onClick={() => removeSource(idx)} className="text-red-500 text-xs hover:underline">Remove</button>
+                                    <button onClick={() => removeSource(idx)} className="text-red-500 text-xs hover:underline">
+                                        {t('ui.remove')}
+                                    </button>
                                 </div>
 
                                 {source.type === 'postgresql' && (
-                                    <p className="text-xs text-gray-500">Internal Database (Tenant Isolated)</p>
+                                    <p className="text-xs text-gray-500">{t('ui.internal_db')}</p>
                                 )}
                                 {source.type === 'minio' && (
-                                    <p className="text-xs text-gray-500">Internal Files (Tenant Isolated)</p>
+                                    <p className="text-xs text-gray-500">{t('ui.internal_files')}</p>
                                 )}
                                 {(source.type === 'odoo' || source.type === 'external-postgres') && (
                                     isPlatformAdmin ? (
                                         <input
                                             type="text"
-                                            placeholder="Connection String (postgres://user:pass@host:port/db)"
+                                            placeholder={t('ui.connection_string_placeholder')}
                                             className="w-full border-gray-300 rounded-md p-1 text-sm"
                                             value={source.connection_string || ''}
                                             onChange={(e) => updateSource(idx, 'connection_string', e.target.value)}
                                         />
                                     ) : (
-                                        <p className="text-xs text-red-500">Contact Platform Admin to configure connection.</p>
+                                        <p className="text-xs text-red-500">{t('ui.contact_admin')}</p>
                                     )
                                 )}
                             </div>
@@ -131,10 +133,10 @@ const BackupConfigForm: React.FC = () => {
                     ))}
 
                     <div className="flex space-x-2 pt-2">
-                        <Button size="sm" variant="outline" onClick={() => addSource('postgresql')}>+ Postgres (Internal)</Button>
-                        <Button size="sm" variant="outline" onClick={() => addSource('minio')}>+ MinIO (Internal)</Button>
-                        <Button size="sm" variant="outline" onClick={() => addSource('odoo')}>+ Odoo</Button>
-                        <Button size="sm" variant="outline" onClick={() => addSource('external-postgres')}>+ External DB</Button>
+                        <Button size="sm" variant="outline" onClick={() => addSource('postgresql')}>{t('ui.add_postgres_internal')}</Button>
+                        <Button size="sm" variant="outline" onClick={() => addSource('minio')}>{t('ui.add_minio_internal')}</Button>
+                        <Button size="sm" variant="outline" onClick={() => addSource('odoo')}>{t('ui.add_odoo')}</Button>
+                        <Button size="sm" variant="outline" onClick={() => addSource('external-postgres')}>{t('ui.add_external_db')}</Button>
                     </div>
                 </div>
             </Card>
@@ -148,7 +150,7 @@ const BackupConfigForm: React.FC = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Provider Type</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">{t('ui.provider_type')}</label>
                         <select
                             className="w-full border-gray-300 rounded-md shadow-sm"
                             value={config.destination_type}
@@ -168,23 +170,23 @@ const BackupConfigForm: React.FC = () => {
                     <div className="space-y-3">
                         {config.destination_type === 's3' && (
                             <>
-                                <input placeholder="Bucket Name" className="w-full border-gray-300 rounded-md p-2 text-sm"
+                                <input placeholder={t('ui.bucket_name')} className="w-full border-gray-300 rounded-md p-2 text-sm"
                                     onChange={e => handleDestConfigChange('bucket', e.target.value)} />
-                                <input placeholder="Endpoint URL (e.g. minio:9000)" className="w-full border-gray-300 rounded-md p-2 text-sm"
+                                <input placeholder={t('ui.endpoint_url')} className="w-full border-gray-300 rounded-md p-2 text-sm"
                                     onChange={e => handleDestConfigChange('endpoint', e.target.value)} />
-                                <input placeholder="Access Key ID" className="w-full border-gray-300 rounded-md p-2 text-sm"
+                                <input placeholder={t('ui.access_key_id')} className="w-full border-gray-300 rounded-md p-2 text-sm"
                                     onChange={e => handleDestConfigChange('access_key_id', e.target.value)} />
-                                <input type="password" placeholder="Secret Access Key" className="w-full border-gray-300 rounded-md p-2 text-sm"
+                                <input type="password" placeholder={t('ui.secret_access_key')} className="w-full border-gray-300 rounded-md p-2 text-sm"
                                     onChange={e => handleDestConfigChange('secret_access_key', e.target.value)} />
                             </>
                         )}
                         {config.destination_type === 'sftp' && (
                             <>
-                                <input placeholder="Host (e.g. 192.168.1.50)" className="w-full border-gray-300 rounded-md p-2 text-sm"
+                                <input placeholder={t('ui.host')} className="w-full border-gray-300 rounded-md p-2 text-sm"
                                     onChange={e => handleDestConfigChange('host', e.target.value)} />
-                                <input placeholder="User" className="w-full border-gray-300 rounded-md p-2 text-sm"
+                                <input placeholder={t('ui.user')} className="w-full border-gray-300 rounded-md p-2 text-sm"
                                     onChange={e => handleDestConfigChange('user', e.target.value)} />
-                                <input type="password" placeholder="Password / Key" className="w-full border-gray-300 rounded-md p-2 text-sm"
+                                <input type="password" placeholder={t('ui.password_or_key')} className="w-full border-gray-300 rounded-md p-2 text-sm"
                                     onChange={e => handleDestConfigChange('pass', e.target.value)} />
                             </>
                         )}
@@ -194,7 +196,7 @@ const BackupConfigForm: React.FC = () => {
 
                 <div className="mt-4 flex justify-end">
                     <Button variant="outline" size="sm" onClick={handleTest} disabled={testing}>
-                        {testing ? 'Testing...' : t('config.test_connection')}
+                        {testing ? t('ui.testing') : t('config.test_connection')}
                     </Button>
                 </div>
             </Card>
@@ -227,7 +229,7 @@ const BackupConfigForm: React.FC = () => {
             <div className="flex justify-end pt-4">
                 <Button variant="default" size="lg" onClick={handleSave} disabled={loading} className="flex items-center">
                     <Save className="w-4 h-4 mr-2" />
-                    {loading ? 'Saving...' : t('config.save')}
+                    {loading ? t('ui.saving') : t('config.save')}
                 </Button>
             </div>
         </div>

@@ -5,6 +5,7 @@ import { Settings, History, RotateCcw } from 'lucide-react';
 import BackupConfigForm from './components/BackupConfigForm';
 import JobHistory from './components/JobHistory';
 import SnapshotTimeline from './components/SnapshotTimeline';
+import './i18n';
 
 const BackupApp: React.FC = () => {
     const { t } = useTranslation('backup');

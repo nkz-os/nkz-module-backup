@@ -1,0 +1,87 @@
+{
+  "title": "Copias de seguridad",
+  "tabs": {
+    "config": "Configuración",
+    "history": "Historial",
+    "restore": "Restaurar"
+  },
+  "config": {
+    "sources": "Fuentes",
+    "destination_title": "Destino",
+    "destination_desc": "Elige dónde se almacenarán las copias de seguridad.",
+    "test_connection": "Probar conexión",
+    "encryption_title": "Cifrado",
+    "encryption_desc": "Las claves de cifrado las gestiona la plataforma. Puedes indicar una frase de paso opcional para protección adicional.",
+    "encryption_placeholder": "Frase de paso opcional",
+    "save": "Guardar"
+  },
+  "destinations": {
+    "s3": "S3",
+    "sftp": "SFTP",
+    "webdav": "WebDAV",
+    "drive": "Google Drive",
+    "dropbox": "Dropbox",
+    "onedrive": "OneDrive"
+  },
+  "retention": {
+    "title": "Política de retención",
+    "explanation": "Define cuántos snapshots conservar para cada intervalo.",
+    "daily": "Diario",
+    "weekly": "Semanal",
+    "monthly": "Mensual"
+  },
+  "snapshot": {
+    "id": "ID"
+  },
+  "restore": {
+    "title": "Restauración",
+    "full_restore": "Restauración completa",
+    "warning": "Esta acción puede sobrescribir datos existentes. Procede con cuidado.",
+    "confirm_token": "Escribe RESTORE para confirmar",
+    "download": "Descargar",
+    "mount": "Montar"
+  },
+  "widget": {
+    "title": "Backups",
+    "not_configured": "La copia de seguridad aún no está configurada.",
+    "configure": "Configurar",
+    "last_backup": "Última copia {{time}}",
+    "never_backed_up": "Aún no hay copias"
+  },
+  "status": {
+    "protected": "Protegido",
+    "at_risk": "En riesgo"
+  },
+  "alerts": {
+    "saved_ok": "Ajustes guardados correctamente",
+    "saved_error": "No se han podido guardar los ajustes",
+    "connection_ok": "¡Conexión correcta! ✅",
+    "connection_error": "La conexión ha fallado ❌"
+  },
+  "ui": {
+    "testing": "Probando...",
+    "saving": "Guardando...",
+    "remove": "Eliminar",
+    "internal_db": "Base de datos interna (aislada por tenant)",
+    "internal_files": "Ficheros internos (aislados por tenant)",
+    "connection_string_placeholder": "Cadena de conexión (postgres://user:pass@host:port/db)",
+    "contact_admin": "Contacta con el admin de la plataforma para configurar la conexión.",
+    "add_postgres_internal": "+ Postgres (interno)",
+    "add_minio_internal": "+ MinIO (interno)",
+    "add_odoo": "+ Odoo",
+    "add_external_db": "+ BD externa",
+    "provider_type": "Tipo de proveedor",
+    "bucket_name": "Nombre del bucket",
+    "endpoint_url": "URL del endpoint (p. ej. minio:9000)",
+    "access_key_id": "Access Key ID",
+    "secret_access_key": "Secret Access Key",
+    "host": "Host (p. ej. 192.168.1.50)",
+    "user": "Usuario",
+    "password_or_key": "Contraseña / clave",
+    "job_date": "Fecha",
+    "job_type": "Tipo",
+    "job_status": "Estado",
+    "job_duration": "Duración",
+    "job_size_dedup": "Tamaño (dedup)"
+  }
+}

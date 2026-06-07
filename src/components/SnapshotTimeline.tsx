@@ -33,11 +33,13 @@ const SnapshotTimeline: React.FC = () => {
                                 </div>
                             </div>
                             {snap.tags.includes('weekly') && (
-                                <span className="bg-purple-100 text-purple-800 text-xs px-2 py-0.5 rounded-full">Weekly</span>
+                                <span className="bg-purple-100 text-purple-800 text-xs px-2 py-0.5 rounded-full">
+                                    {t('retention.weekly')}
+                                </span>
                             )}
                         </div>
                         <div className="mt-4 flex justify-between items-center text-sm text-gray-600">
-                            <span>ID: {snap.id.substring(0, 8)}</span>
+                            <span>{t('snapshot.id')}: {snap.id.substring(0, 8)}</span>
                             <span>{snap.size}</span>
                         </div>
                     </Card>
