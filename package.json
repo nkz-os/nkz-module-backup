@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Nekazari Backup Module",
   "license": "AGPL-3.0",
+  "packageManager": "pnpm@9.0.0",
   "main": "./src/Module.tsx",
   "type": "module",
   "nkz": {
