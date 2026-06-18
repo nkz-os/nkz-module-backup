@@ -14,7 +14,10 @@ async def get_jwks():
     global _jwks_keys
     if _jwks_keys is None:
         async with httpx.AsyncClient() as client:
-            resp = await client.get(settings.JWKS_URL, verify=False) # Internal Keycloak, trusted network
+            # Internal Keycloak (JWKS_URL must be the cluster-internal http URL,
+            # e.g. http://keycloak-service:8080/auth/...). No SSL bypass — FIWARE/
+            # platform rule forbids verify=False; for http it is a no-op anyway.
+            resp = await client.get(settings.JWKS_URL)
             _jwks_keys = resp.json()
     return _jwks_keys
 
