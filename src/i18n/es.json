@@ -1,0 +1,59 @@
+{
+    "title": "Copias de Seguridad y Recuperación",
+    "tabs": {
+        "config": "Configuración",
+        "history": "Historial",
+        "restore": "Restaurar"
+    },
+    "widget": {
+        "title": "Estado de Copias",
+        "not_configured": "Copia de seguridad no configurada",
+        "configure": "Configurar ahora",
+        "last_backup": "Última copia {{time}}",
+        "never_backed_up": "Nunca realizado"
+    },
+    "status": {
+        "protected": "Protegido",
+        "at_risk": "En Riesgo",
+        "running": "En Progreso",
+        "failed": "Fallido",
+        "success": "Completado"
+    },
+    "config": {
+        "destination_title": "Destino de Almacenamiento",
+        "destination_desc": "Elige dónde quieres guardar tus copias cifradas. Tú eres el dueño de los datos.",
+        "schedule_title": "Frecuencia",
+        "encryption_title": "Cifrado (Soberanía de Datos)",
+        "encryption_desc": "Esta clave cifra tus datos antes de salir del servidor. Si la pierdes, los datos son irrecuperables. NKZ no guarda copia de esta clave.",
+        "encryption_placeholder": "Introduce una clave maestra segura...",
+        "test_connection": "Probar Conexión",
+        "save": "Guardar Configuración",
+        "sources": "Fuentes de Datos"
+    },
+    "destinations": {
+        "s3": "S3 Compatible (AWS, MinIO, Wasabi)",
+        "sftp": "SFTP / SSH",
+        "webdav": "WebDAV / Nextcloud",
+        "drive": "Google Drive",
+        "dropbox": "Dropbox",
+        "onedrive": "Microsoft OneDrive"
+    },
+    "retention": {
+        "title": "Política de Retención",
+        "daily": "Diarias (Días)",
+        "weekly": "Semanales (Semanas)",
+        "monthly": "Mensuales (Meses)",
+        "explanation": "El sistema borrará automáticamente las copias antiguas que excedan estos límites para ahorrar espacio (rotación GFS)."
+    },
+    "restore": {
+        "title": "Time Machine",
+        "select_snapshot": "Selecciona un punto en el tiempo",
+        "actions": "Acciones de Restauración",
+        "full_restore": "Restauración Completa",
+        "download": "Descargar Ficheros",
+        "mount": "Montar Explorador",
+        "warning": "¡Cuidado! Una restauración completa sobrescribirá los datos actuales.",
+        "confirm_token": "Escribe 'RESTORE' para confirmar",
+        "download_link": "Generar Enlace Seguro"
+    }
+}
